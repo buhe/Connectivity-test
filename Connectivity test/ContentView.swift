@@ -9,13 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            PingView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "display.and.arrow.down")
+                        Text("Ping")
+                    }
+                }
+            TcpView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "airport.extreme")
+                        Text("TCP")
+                    }
+                }
+            HttpView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "network")
+                        Text("Http")
+                    }
+                }
+            OtherView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "iphone.homebutton.radiowaves.left.and.right")
+                        Text("Other")
+                    }
+                }
         }
-        .padding()
     }
 }
 

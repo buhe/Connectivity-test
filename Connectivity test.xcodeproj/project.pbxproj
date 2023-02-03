@@ -14,6 +14,10 @@
 		3FF87A73295868200036672A /* Connectivity_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF87A72295868200036672A /* Connectivity_testTests.swift */; };
 		3FF87A7D295868200036672A /* Connectivity_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF87A7C295868200036672A /* Connectivity_testUITests.swift */; };
 		3FF87A7F295868200036672A /* Connectivity_testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF87A7E295868200036672A /* Connectivity_testUITestsLaunchTests.swift */; };
+		3FFF719C298CAEAD003DE3D9 /* PingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719B298CAEAD003DE3D9 /* PingView.swift */; };
+		3FFF719E298CAF01003DE3D9 /* TcpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719D298CAF01003DE3D9 /* TcpView.swift */; };
+		3FFF71A0298CAF1D003DE3D9 /* HttpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719F298CAF1D003DE3D9 /* HttpView.swift */; };
+		3FFF71A2298CAF3A003DE3D9 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		3FF87A78295868200036672A /* Connectivity testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Connectivity testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF87A7C295868200036672A /* Connectivity_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity_testUITests.swift; sourceTree = "<group>"; };
 		3FF87A7E295868200036672A /* Connectivity_testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity_testUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FFF719B298CAEAD003DE3D9 /* PingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingView.swift; sourceTree = "<group>"; };
+		3FFF719D298CAF01003DE3D9 /* TcpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpView.swift; sourceTree = "<group>"; };
+		3FFF719F298CAF1D003DE3D9 /* HttpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpView.swift; sourceTree = "<group>"; };
+		3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 				3FF87A64295868200036672A /* Assets.xcassets */,
 				3FF87A66295868200036672A /* Connectivity_test.entitlements */,
 				3FF87A67295868200036672A /* Preview Content */,
+				3FFF719B298CAEAD003DE3D9 /* PingView.swift */,
+				3FFF719D298CAF01003DE3D9 /* TcpView.swift */,
+				3FFF719F298CAF1D003DE3D9 /* HttpView.swift */,
+				3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */,
 			);
 			path = "Connectivity test";
 			sourceTree = "<group>";
@@ -259,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFF719C298CAEAD003DE3D9 /* PingView.swift in Sources */,
 				3FF87A632958681E0036672A /* ContentView.swift in Sources */,
+				3FFF719E298CAF01003DE3D9 /* TcpView.swift in Sources */,
 				3FF87A612958681E0036672A /* Connectivity_testApp.swift in Sources */,
+				3FFF71A0298CAF1D003DE3D9 /* HttpView.swift in Sources */,
+				3FFF71A2298CAF3A003DE3D9 /* OtherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
