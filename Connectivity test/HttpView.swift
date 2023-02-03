@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Swifter
+import Embassy
 
 struct HttpView: View {
     @State var showPureHttpOutput = true
@@ -20,7 +21,7 @@ struct HttpView: View {
                         ttl = 4ms
                         ttl = 4ms
                         """
-    
+    var httpServerContorl = HttpServerContorl()
     var body: some View {
         NavigationStack {
             List {
@@ -254,6 +255,7 @@ struct HttpView: View {
                                 }
 
                                 do {
+                                    server.listenAddressIPv4 = "0.0.0.0"
                                   try server.start(9080, forceIPv4: true)
                                     print("Server has started ( host = \(UIDevice.current.getIP() ?? "You maybe use celluar.") port = \(try server.port()) ). Try to connect now...")
                                  

@@ -22,6 +22,8 @@
 		3FFF71A7298CCEFC003DE3D9 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */; };
 		3FFF71AA298CF766003DE3D9 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71A9298CF766003DE3D9 /* Swifter */; };
 		3FFF71AC298CFC84003DE3D9 /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71AB298CFC84003DE3D9 /* Ex.swift */; };
+		3FFF71AF298D19BA003DE3D9 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71AE298D19BA003DE3D9 /* Embassy */; };
+		3FFF71B1298D1FB6003DE3D9 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71B0298D1FB6003DE3D9 /* HttpServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 		3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3FFF71AB298CFC84003DE3D9 /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
+		3FFF71B0298D1FB6003DE3D9 /* HttpServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFF71AF298D19BA003DE3D9 /* Embassy in Frameworks */,
 				3FFF71A7298CCEFC003DE3D9 /* SwiftyPing in Frameworks */,
 				3FFF71AA298CF766003DE3D9 /* Swifter in Frameworks */,
 			);
@@ -122,6 +126,7 @@
 				3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */,
 				3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */,
 				3FFF71AB298CFC84003DE3D9 /* Ex.swift */,
+				3FFF71B0298D1FB6003DE3D9 /* HttpServer.swift */,
 			);
 			path = "Connectivity test";
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			packageProductDependencies = (
 				3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */,
 				3FFF71A9298CF766003DE3D9 /* Swifter */,
+				3FFF71AE298D19BA003DE3D9 /* Embassy */,
 			);
 			productName = "Connectivity test";
 			productReference = 3FF87A5D2958681E0036672A /* Connectivity test.app */;
@@ -246,6 +252,7 @@
 			packageReferences = (
 				3FFF71A5298CCEFC003DE3D9 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				3FFF71A8298CF766003DE3D9 /* XCRemoteSwiftPackageReference "swifter" */,
+				3FFF71AD298D19BA003DE3D9 /* XCRemoteSwiftPackageReference "Embassy" */,
 			);
 			productRefGroup = 3FF87A5E2958681E0036672A /* Products */;
 			projectDirPath = "";
@@ -294,6 +301,7 @@
 				3FFF719C298CAEAD003DE3D9 /* PingView.swift in Sources */,
 				3FF87A632958681E0036672A /* ContentView.swift in Sources */,
 				3FFF719E298CAF01003DE3D9 /* TcpView.swift in Sources */,
+				3FFF71B1298D1FB6003DE3D9 /* HttpServer.swift in Sources */,
 				3FF87A612958681E0036672A /* Connectivity_testApp.swift in Sources */,
 				3FFF71A0298CAF1D003DE3D9 /* HttpView.swift in Sources */,
 				3FFF71A2298CAF3A003DE3D9 /* OtherView.swift in Sources */,
@@ -670,6 +678,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		3FFF71AD298D19BA003DE3D9 /* XCRemoteSwiftPackageReference "Embassy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/envoy/Embassy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -682,6 +698,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3FFF71A8298CF766003DE3D9 /* XCRemoteSwiftPackageReference "swifter" */;
 			productName = Swifter;
+		};
+		3FFF71AE298D19BA003DE3D9 /* Embassy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FFF71AD298D19BA003DE3D9 /* XCRemoteSwiftPackageReference "Embassy" */;
+			productName = Embassy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

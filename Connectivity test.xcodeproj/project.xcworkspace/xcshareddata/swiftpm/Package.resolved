@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "embassy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/envoy/Embassy",
+      "state" : {
+        "revision" : "8469f2c1b334a7c1c3566e2cb2f97826c7cca898",
+        "version" : "4.1.6"
+      }
+    },
+    {
       "identity" : "swifter",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/httpswift/swifter",
