@@ -36,6 +36,7 @@ struct HttpView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -63,6 +64,7 @@ struct HttpView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -95,6 +97,7 @@ struct HttpView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -127,6 +130,7 @@ struct HttpView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -159,6 +163,7 @@ struct HttpView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
         }
         .listStyle(PlainListStyle())
     }

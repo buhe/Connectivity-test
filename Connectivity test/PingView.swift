@@ -34,6 +34,7 @@ struct PingView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
         }
         .listStyle(PlainListStyle())
     }

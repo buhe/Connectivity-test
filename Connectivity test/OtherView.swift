@@ -41,6 +41,7 @@ struct OtherView: View {
                     .padding()
                 }
             }
+            .listRowSeparator(.hidden)
         }
         .listStyle(PlainListStyle())
     }
