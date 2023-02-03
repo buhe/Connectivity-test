@@ -8,160 +8,262 @@
 import SwiftUI
 
 struct HttpView: View {
+    @State var showPureHttpOutput = true
+    @State var showHttpServerOutput = true
+    @State var showPureHttpsOutput = true
+    @State var showHttpsCertOutput = true
+    @State var showWebsocketOutput = true
+    @State var output = """
+                        ttl = 4ms
+                        ttl = 4ms
+                        ttl = 4ms
+                        ttl = 4ms
+                        """
+    
     var body: some View {
         NavigationStack {
             List {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.yellow)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text("Pure Http")
-                            HStack {
-                                Text("Server:baidu.com")
-                            }
-                            .font(.caption)
-                            Text("Port:1234")
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("Pure Http")
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
                                 .font(.caption)
-                        }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-                    }
-                }
-                .listRowSeparator(.hidden)
-                
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.yellow)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text("Pure Https")
-                            HStack {
-                                Text("Server:baidu.com")
-                            }
-                            .font(.caption)
-                            Text("Port:1234")
-                                .font(.caption)
-                        }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-                    }
-                }
-                .listRowSeparator(.hidden)
-                
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.yellow)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            HStack {
-                                Text("Websockt")
-                                Text("pro")
-                                    .fontWeight(.bold)
+                                Text("Port:1234")
                                     .font(.caption)
                             }
-                            HStack {
-                                Text("Server:baidu.com")
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
                             }
-                            .font(.caption)
-                            Text("Port:23")
-                                .font(.caption)
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
+                    }
+                    
+                    if showPureHttpOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                    } else {
+                        EmptyView()
                     }
                 }
                 .listRowSeparator(.hidden)
                 
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.yellow)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            HStack {
-                                Text("Https with custom certificate")
-                                Text("pro")
-                                    .fontWeight(.bold)
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("Pure Https")
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
+                                .font(.caption)
+                                Text("Port:1234")
                                     .font(.caption)
                             }
-                            HStack {
-                                Text("Server:baidu.com")
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
                             }
-                            .font(.caption)
-                            Text("Port:23")
-                                .font(.caption)
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
+                    }
+                    
+                    if showPureHttpsOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                    } else {
+                        EmptyView()
                     }
                 }
                 .listRowSeparator(.hidden)
                 
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.yellow)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            HStack {
-                                Text("Http Server")
-                                Text("pro")
-                                    .fontWeight(.bold)
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                HStack {
+                                    Text("Websockt")
+                                    Text("pro")
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                }
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
+                                .font(.caption)
+                                Text("Port:23")
                                     .font(.caption)
                             }
-                            HStack {
-                                Text("Server:baidu.com")
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
                             }
-                            .font(.caption)
-                            Text("Port:23")
+                            .buttonStyle(.borderedProminent)
+                            .padding()
+                        }
+                    }
+                    
+                    if showWebsocketOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
+                        }
+                    } else {
+                        EmptyView()
+                    }
+                }
+                .listRowSeparator(.hidden)
+                
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                HStack {
+                                    Text("Https with custom certificate")
+                                    Text("pro")
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                }
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
                                 .font(.caption)
+                                Text("Port:23")
+                                    .font(.caption)
+                            }
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
+                    }
+                    
+                    if showHttpsCertOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                    } else {
+                        EmptyView()
+                    }
+                }
+                .listRowSeparator(.hidden)
+                
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                HStack {
+                                    Text("Http Server")
+                                    Text("pro")
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                }
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
+                                .font(.caption)
+                                Text("Port:23")
+                                    .font(.caption)
+                            }
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
+                        }
+                    }
+                    
+                    if showHttpServerOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
+                        }
+                    } else {
+                        EmptyView()
                     }
                 }
                 .listRowSeparator(.hidden)

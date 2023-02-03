@@ -19,6 +19,7 @@
 		3FFF71A0298CAF1D003DE3D9 /* HttpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719F298CAF1D003DE3D9 /* HttpView.swift */; };
 		3FFF71A2298CAF3A003DE3D9 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */; };
 		3FFF71A4298CBDF8003DE3D9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */; };
+		3FFF71A7298CCEFC003DE3D9 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFF71A7298CCEFC003DE3D9 /* SwiftyPing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +162,9 @@
 			dependencies = (
 			);
 			name = "Connectivity test";
+			packageProductDependencies = (
+				3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */,
+			);
 			productName = "Connectivity test";
 			productReference = 3FF87A5D2958681E0036672A /* Connectivity test.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 3FF87A542958681E0036672A;
+			packageReferences = (
+				3FFF71A5298CCEFC003DE3D9 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
+			);
 			productRefGroup = 3FF87A5E2958681E0036672A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -636,6 +644,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3FFF71A5298CCEFC003DE3D9 /* XCRemoteSwiftPackageReference "SwiftyPing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/samiyr/SwiftyPing";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FFF71A5298CCEFC003DE3D9 /* XCRemoteSwiftPackageReference "SwiftyPing" */;
+			productName = SwiftyPing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3FF87A552958681E0036672A /* Project object */;
 }

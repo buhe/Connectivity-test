@@ -8,31 +8,61 @@
 import SwiftUI
 
 struct PingView: View {
+    @State var showOutput = true
+    @State var output = """
+                        ttl = 4ms
+                        ttl = 4ms
+                        ttl = 4ms
+                        ttl = 4ms
+                        """
+    
     var body: some View {
         NavigationStack {
             List {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.blue)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text("Ping")
-                            HStack {
-                                Text("Server:baidu.com")
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.blue)
+                            .opacity(0.3)
+                            .frame(height: 88)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("Ping")
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
+                                .font(.caption)
                             }
-                            .font(.caption)
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
+                    }
+//                    Toggle(isOn: $showOutput){
+////                        Image(systemName: "eye")
+//                    }
+                    
+                    if showOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.blue)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                    } else {
+                        EmptyView()
                     }
                 }
                 .listRowSeparator(.hidden)
