@@ -18,6 +18,7 @@
 		3FFF719E298CAF01003DE3D9 /* TcpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719D298CAF01003DE3D9 /* TcpView.swift */; };
 		3FFF71A0298CAF1D003DE3D9 /* HttpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF719F298CAF1D003DE3D9 /* HttpView.swift */; };
 		3FFF71A2298CAF3A003DE3D9 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */; };
+		3FFF71A4298CBDF8003DE3D9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3FFF719D298CAF01003DE3D9 /* TcpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpView.swift; sourceTree = "<group>"; };
 		3FFF719F298CAF1D003DE3D9 /* HttpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpView.swift; sourceTree = "<group>"; };
 		3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
+		3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				3FFF719D298CAF01003DE3D9 /* TcpView.swift */,
 				3FFF719F298CAF1D003DE3D9 /* HttpView.swift */,
 				3FFF71A1298CAF3A003DE3D9 /* OtherView.swift */,
+				3FFF71A3298CBDF8003DE3D9 /* SettingsView.swift */,
 			);
 			path = "Connectivity test";
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFF71A4298CBDF8003DE3D9 /* SettingsView.swift in Sources */,
 				3FFF719C298CAEAD003DE3D9 /* PingView.swift in Sources */,
 				3FF87A632958681E0036672A /* ContentView.swift in Sources */,
 				3FFF719E298CAF01003DE3D9 /* TcpView.swift in Sources */,

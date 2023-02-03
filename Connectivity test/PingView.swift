@@ -9,34 +9,43 @@ import SwiftUI
 
 struct PingView: View {
     var body: some View {
-        List {
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .fill(.blue)
-                    .opacity(0.3)
-//                    .shadow(radius: 10)
-                HStack {
-                    VStack(alignment: .leading){
-                        Text("Ping")
-                        HStack {
-                            Text("Server:baidu.com")
+        NavigationStack {
+            List {
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                        .fill(.blue)
+                        .opacity(0.3)
+                    //                    .shadow(radius: 10)
+                    HStack {
+                        VStack(alignment: .leading){
+                            Text("Ping")
+                            HStack {
+                                Text("Server:baidu.com")
+                            }
+                            .font(.caption)
                         }
-                        .font(.caption)
+                        .padding()
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("Run")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding()
                     }
-                    .padding()
-                    Spacer()
-                    Button{
-                        
-                    }label: {
-                        Text("Run")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(PlainListStyle())
+            .toolbar{
+                NavigationLink{
+                    SettingsView()
+                } label: {
+                    Image(systemName: "gear")
                 }
             }
-            .listRowSeparator(.hidden)
         }
-        .listStyle(PlainListStyle())
     }
 }
 

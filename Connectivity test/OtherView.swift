@@ -9,41 +9,50 @@ import SwiftUI
 
 struct OtherView: View {
     var body: some View {
-        List {
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .fill(.green)
-                    .opacity(0.3)
-//                    .shadow(radius: 10)
-                HStack {
-                    VStack(alignment: .leading){
-                        HStack {
-                            Text("Bluetooth")
-                            Text("pro")
-                                .fontWeight(.bold)
+        NavigationStack {
+            List {
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                        .fill(.green)
+                        .opacity(0.3)
+                    //                    .shadow(radius: 10)
+                    HStack {
+                        VStack(alignment: .leading){
+                            HStack {
+                                Text("Bluetooth")
+                                Text("pro")
+                                    .fontWeight(.bold)
+                                    .font(.caption)
+                            }
+                            HStack {
+                                Text("Server:baidu.com")
+                            }
+                            .font(.caption)
+                            Text("Port:23")
                                 .font(.caption)
                         }
-                        HStack {
-                            Text("Server:baidu.com")
+                        .padding()
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("Run")
                         }
-                        .font(.caption)
-                        Text("Port:23")
-                            .font(.caption)
+                        .buttonStyle(.borderedProminent)
+                        .padding()
                     }
-                    .padding()
-                    Spacer()
-                    Button{
-                        
-                    }label: {
-                        Text("Run")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(PlainListStyle())
+            .toolbar{
+                NavigationLink{
+                    SettingsView()
+                } label: {
+                    Image(systemName: "gear")
                 }
             }
-            .listRowSeparator(.hidden)
         }
-        .listStyle(PlainListStyle())
     }
 }
 
