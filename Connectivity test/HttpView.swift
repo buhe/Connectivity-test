@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Swifter
 
 struct HttpView: View {
     @State var showPureHttpOutput = true
@@ -241,7 +242,25 @@ struct HttpView: View {
                             .padding()
                             Spacer()
                             Button{
-                                
+                                let server = HttpServer()
+                                server["/"] = scopes {
+                                  html {
+                                      Swifter.body {
+                                      center {
+                                        img { src = "https://swift.org/assets/images/swift.svg" }
+                                      }
+                                    }
+                                  }
+                                }
+
+                                do {
+                                  try server.start(9080, forceIPv4: true)
+                                    print("Server has started ( host = \(UIDevice.current.getIP() ?? "You maybe use celluar.") port = \(try server.port()) ). Try to connect now...")
+                                 
+                                } catch {
+                                  print("Server start error: \(error)")
+                                 
+                                }
                             }label: {
                                 Text("Run")
                             }
