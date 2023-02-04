@@ -10,11 +10,12 @@ import Swifter
 import Embassy
 
 struct HttpView: View {
-    @State var showPureHttpOutput = true
-    @State var showHttpServerOutput = true
-    @State var showPureHttpsOutput = true
-    @State var showHttpsCertOutput = true
-    @State var showWebsocketOutput = true
+    @State var showPureHttpOutput = false
+    @State var showHttpServerOutput = false
+    @State var showPureHttpsOutput = false
+    @State var showHttpsCertOutput = false
+    @State var showWebsocketOutput = false
+    @State var showWebsocketServerOutput = false
     @State var output = """
                         ttl = 4ms
                         ttl = 4ms
@@ -272,6 +273,57 @@ struct HttpView: View {
                     }
                     
                     if showHttpServerOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.yellow)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
+                        }
+                    } else {
+                        EmptyView()
+                    }
+                }
+                .listRowSeparator(.hidden)
+                
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.yellow)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                HStack {
+                                    Text("Websocket PingPong Server")
+                                    Text("pro")
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                }
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
+                                .font(.caption)
+                                Text("Port:23")
+                                    .font(.caption)
+                            }
+                            .padding()
+                            Spacer()
+                            Button{
+                                
+                            }label: {
+                                Text("Run")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
+                        }
+                    }
+                    
+                    if showWebsocketServerOutput {
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 25, style: .continuous)
                                 .fill(.yellow)
