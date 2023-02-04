@@ -54,7 +54,9 @@ struct SettingsView: View {
                     }
                 }
                 .sheet(isPresented: $showingIAP){
-                    
+                    ProView{
+                        showingIAP = false
+                    }
                 }
                 
             }
