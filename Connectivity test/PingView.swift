@@ -31,6 +31,8 @@ struct PingView: View {
                                 HStack {
                                     Text("Server:")
                                     TextField("Host", text: $host)
+                                        .disableAutocorrection(true)
+                                        .textInputAutocapitalization(.never)
                                 }
                                 .font(.caption)
                             }
