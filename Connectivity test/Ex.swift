@@ -8,6 +8,9 @@
 import Foundation
 
 import UIKit
+func doubleFormat(value: Double) -> String {
+    String(format: "%.3f", value)
+}
 
 extension UIDevice {
     

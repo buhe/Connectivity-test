@@ -6,15 +6,13 @@
 //
 
 import SwiftUI
+import SwiftyPing
 
 struct PingView: View {
-    @State var showOutput = true
-    @State var output = """
-                        ttl = 4ms
-                        ttl = 4ms
-                        ttl = 4ms
-                        ttl = 4ms
-                        """
+    @State var showOutput = false
+    @State var output = ""
+    @State var isRunning = false
+    @State var pinger: SwiftyPing?
     
     var body: some View {
         NavigationStack {
@@ -38,8 +36,28 @@ struct PingView: View {
                             Spacer()
                             Button{
                                 
+                                if isRunning {
+                                    pinger!.stopPinging()
+                                    isRunning.toggle()
+                                    showOutput.toggle()
+                                    output = ""
+                                } else {
+                                    pinger = try? SwiftyPing(host: "baidu.com", configuration: PingConfiguration(interval: 0.5, with: 5), queue: DispatchQueue.global())
+                                    pinger?.observer = { (response) in
+                                        let duration = response.duration * 1000
+                                        print(duration)
+                                        DispatchQueue.main.async {
+                                            output = "\(response.byteCount ?? 0) bytes \(response.ipAddress ?? "") : icmp_seq=\(response.sequenceNumber)  time=\(doubleFormat(value: duration))ms \n" + output
+                                        }
+                                    }
+                                    try? pinger?.startPinging()
+                                    isRunning.toggle()
+                                    showOutput.toggle()
+                                }
+                                
+
                             }label: {
-                                Text("Run")
+                                Text(isRunning ? "Stop" : "Run")
                             }
                             .buttonStyle(.borderedProminent)
                             .padding()
