@@ -46,20 +46,31 @@ struct PingView: View {
                                     showOutput.toggle()
                                     output = ""
                                 } else {
-                                    pinger = try? SwiftyPing(host: host, configuration: PingConfiguration(interval: 0.5, with: 0.5), queue: DispatchQueue.global())
-                                    pinger?.observer = { (response) in
-                                        let duration = response.duration * 1000
-                                        let size = response.byteCount ?? 0
-//                                        print(duration)
-                                        DispatchQueue.main.async {
-                                            if size == 0 {
-                                                output = "Request timeout for seq=\(response.sequenceNumber)\n" + output
-                                            } else {
-                                                output = "\(size) bytes \(response.ipAddress ?? "") : seq=\(response.sequenceNumber)  time=\(doubleFormat(value: duration))ms \n" + output
+                                    if let _ = URL(string: host) {
+                                        // todo bachground thread
+                                        if let ip = UIDevice.current.getIPs(dnsName: host) {
+                                            print(ip)
+                                            pinger = try? SwiftyPing(host: host, configuration: PingConfiguration(interval: 0.5, with: 0.5), queue: DispatchQueue.global())
+                                            pinger?.observer = { (response) in
+                                                let duration = response.duration * 1000
+                                                let size = response.byteCount ?? 0
+                                                //                                        print(duration)
+                                                DispatchQueue.main.async {
+                                                    if size == 0 {
+                                                        output = "Request timeout for seq=\(response.sequenceNumber)\n" + output
+                                                    } else {
+                                                        output = "\(size) bytes \(response.ipAddress ?? "") : seq=\(response.sequenceNumber)  time=\(doubleFormat(value: duration))ms \n" + output
+                                                    }
+                                                }
                                             }
+                                            try? pinger?.startPinging()
+                                           
+                                        } else {
+                                            output = "cannot resolve \(host): Unknown host"
                                         }
+                                    } else {
+                                        output = "cannot resolve \(host): Unknown host"
                                     }
-                                    try? pinger?.startPinging()
                                     isRunning.toggle()
                                     showOutput.toggle()
                                 }
