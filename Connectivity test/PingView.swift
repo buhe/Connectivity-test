@@ -15,6 +15,8 @@ struct PingView: View {
     @State var pinger: SwiftyPing?
     @State var host = "baidu.com"
     
+    @FocusState private var keyFocused: Bool
+    
     var body: some View {
         NavigationStack {
             List {
@@ -33,6 +35,7 @@ struct PingView: View {
                                     TextField("Host", text: $host)
                                         .disableAutocorrection(true)
                                         .textInputAutocapitalization(.never)
+                                        .focused($keyFocused)
                                 }
                                 .font(.caption)
                             }
@@ -104,6 +107,9 @@ struct PingView: View {
                     }
                 }
                 .listRowSeparator(.hidden)
+                .onTapGesture {
+                    keyFocused = true
+                }
             }
             .listStyle(PlainListStyle())
             .toolbar{
