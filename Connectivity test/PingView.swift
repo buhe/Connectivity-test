@@ -13,6 +13,7 @@ struct PingView: View {
     @State var output = ""
     @State var isRunning = false
     @State var pinger: SwiftyPing?
+    @State var host = "baidu.com"
     
     var body: some View {
         NavigationStack {
@@ -28,7 +29,8 @@ struct PingView: View {
                             VStack(alignment: .leading){
                                 Text("Ping")
                                 HStack {
-                                    Text("Server:baidu.com")
+                                    Text("Server:")
+                                    TextField("Host", text: $host)
                                 }
                                 .font(.caption)
                             }
@@ -37,17 +39,22 @@ struct PingView: View {
                             Button{
                                 
                                 if isRunning {
-                                    pinger!.stopPinging()
+                                    pinger?.stopPinging()
                                     isRunning.toggle()
                                     showOutput.toggle()
                                     output = ""
                                 } else {
-                                    pinger = try? SwiftyPing(host: "baidu.com", configuration: PingConfiguration(interval: 0.5, with: 5), queue: DispatchQueue.global())
+                                    pinger = try? SwiftyPing(host: host, configuration: PingConfiguration(interval: 0.5, with: 0.5), queue: DispatchQueue.global())
                                     pinger?.observer = { (response) in
                                         let duration = response.duration * 1000
-                                        print(duration)
+                                        let size = response.byteCount ?? 0
+//                                        print(duration)
                                         DispatchQueue.main.async {
-                                            output = "\(response.byteCount ?? 0) bytes \(response.ipAddress ?? "") : icmp_seq=\(response.sequenceNumber)  time=\(doubleFormat(value: duration))ms \n" + output
+                                            if size == 0 {
+                                                output = "Request timeout for seq=\(response.sequenceNumber)\n" + output
+                                            } else {
+                                                output = "\(size) bytes \(response.ipAddress ?? "") : seq=\(response.sequenceNumber)  time=\(doubleFormat(value: duration))ms \n" + output
+                                            }
                                         }
                                     }
                                     try? pinger?.startPinging()
