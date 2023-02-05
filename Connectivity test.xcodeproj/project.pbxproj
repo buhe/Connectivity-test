@@ -25,6 +25,7 @@
 		3FFF71AF298D19BA003DE3D9 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71AE298D19BA003DE3D9 /* Embassy */; };
 		3FFF71B1298D1FB6003DE3D9 /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71B0298D1FB6003DE3D9 /* HttpServer.swift */; };
 		3FFF71B4298E2847003DE3D9 /* ProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF71B3298E2847003DE3D9 /* ProView.swift */; };
+		3FFF71B7298E61A6003DE3D9 /* SSHClient in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFF71B6298E61A6003DE3D9 /* SSHClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FB51DF0298E6842002AA4E1 /* Connectivity-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Connectivity-test-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3FF87A5D2958681E0036672A /* Connectivity test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Connectivity test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF87A602958681E0036672A /* Connectivity_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity_testApp.swift; sourceTree = "<group>"; };
 		3FF87A622958681E0036672A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			files = (
 				3FFF71AF298D19BA003DE3D9 /* Embassy in Frameworks */,
 				3FFF71A7298CCEFC003DE3D9 /* SwiftyPing in Frameworks */,
+				3FFF71B7298E61A6003DE3D9 /* SSHClient in Frameworks */,
 				3FFF71AA298CF766003DE3D9 /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +120,7 @@
 		3FF87A5F2958681E0036672A /* Connectivity test */ = {
 			isa = PBXGroup;
 			children = (
+				3FB51DF0298E6842002AA4E1 /* Connectivity-test-Info.plist */,
 				3FFF71B2298E280A003DE3D9 /* inner */,
 				3FF87A602958681E0036672A /* Connectivity_testApp.swift */,
 				3FF87A622958681E0036672A /* ContentView.swift */,
@@ -187,6 +191,7 @@
 				3FFF71A6298CCEFC003DE3D9 /* SwiftyPing */,
 				3FFF71A9298CF766003DE3D9 /* Swifter */,
 				3FFF71AE298D19BA003DE3D9 /* Embassy */,
+				3FFF71B6298E61A6003DE3D9 /* SSHClient */,
 			);
 			productName = "Connectivity test";
 			productReference = 3FF87A5D2958681E0036672A /* Connectivity test.app */;
@@ -264,6 +269,7 @@
 				3FFF71A5298CCEFC003DE3D9 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				3FFF71A8298CF766003DE3D9 /* XCRemoteSwiftPackageReference "swifter" */,
 				3FFF71AD298D19BA003DE3D9 /* XCRemoteSwiftPackageReference "Embassy" */,
+				3FFF71B5298E61A6003DE3D9 /* XCRemoteSwiftPackageReference "swift-ssh-client" */,
 			);
 			productRefGroup = 3FF87A5E2958681E0036672A /* Products */;
 			projectDirPath = "";
@@ -475,8 +481,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Connectivity-test-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Ping Premium";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ssh your lan device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -515,8 +523,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Connectivity-test-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Ping Premium";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ssh your lan device.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -698,6 +708,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		3FFF71B5298E61A6003DE3D9 /* XCRemoteSwiftPackageReference "swift-ssh-client" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gaetanzanella/swift-ssh-client";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -715,6 +733,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3FFF71AD298D19BA003DE3D9 /* XCRemoteSwiftPackageReference "Embassy" */;
 			productName = Embassy;
+		};
+		3FFF71B6298E61A6003DE3D9 /* SSHClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FFF71B5298E61A6003DE3D9 /* XCRemoteSwiftPackageReference "swift-ssh-client" */;
+			productName = SSHClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

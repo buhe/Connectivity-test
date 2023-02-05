@@ -16,12 +16,7 @@ struct HttpView: View {
     @State var showHttpsCertOutput = false
     @State var showWebsocketOutput = false
     @State var showWebsocketServerOutput = false
-    @State var output = """
-                        ttl = 4ms
-                        ttl = 4ms
-                        ttl = 4ms
-                        ttl = 4ms
-                        """
+    @State var output = ""
     var httpServerContorl = HttpServerContorl()
     var body: some View {
         NavigationStack {

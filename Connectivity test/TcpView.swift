@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SSHClient
 
 struct TcpView: View {
+    @State var showTcpOutput = false
+    @State var showSSHOutput = false
+    @State var output = ""
+    
     var body: some View {
         NavigationStack{
             List {
@@ -39,38 +44,82 @@ struct TcpView: View {
                 }
                 .listRowSeparator(.hidden)
                 
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.red)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            HStack {
-                                Text("SSH")
-                                Text("pro")
-                                    .fontWeight(.bold)
+                VStack {
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.red)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                HStack {
+                                    Text("SSH")
+                                    Text("pro")
+                                        .fontWeight(.bold)
+                                        .font(.caption)
+                                }
+                                HStack {
+                                    Text("Server:192.168.31.16")
+                                }
+                                .font(.caption)
+                                Text("Port:22")
                                     .font(.caption)
                             }
-                            HStack {
-                                Text("Server:baidu.com")
+                            .padding()
+                            Spacer()
+                            Button{
+                                DispatchQueue.global(qos: .background).async {
+                                    let connection = SSHConnection(
+                                        host: "192.168.31.16",
+                                        port: 22,
+                                        authentication: SSHAuthentication(
+                                            username: "pi",
+                                            method: .password(.init("aa11aa")),
+                                            hostKeyValidation: .acceptAll()
+                                        )
+                                    )
+                                    
+                                    connection.start(withTimeout: 3.0) { result in
+                                        switch result {
+                                        case .success:
+                                            DispatchQueue.main.async {
+                                                output = "SSH connected."
+                                            }
+                                            // Handle connection
+                                        case .failure:
+                                            DispatchQueue.main.async {
+                                                output = "SSH connect failed. \(result)"
+                                            }
+                                            // Handle failure
+                                        }
+                                    }
+                                }
+                                
+                                showSSHOutput.toggle()
+                            }label: {
+                                Text("Run")
                             }
-                            .font(.caption)
-                            Text("Port:23")
-                                .font(.caption)
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
                     }
-                }
-                .listRowSeparator(.hidden)
+                    
+                    if showSSHOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.red)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
+                        }
+                    } else {
+                        EmptyView()
+                    }
+                }.listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
             .toolbar{
