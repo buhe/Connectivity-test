@@ -79,7 +79,6 @@ struct TcpView: View {
                                     .padding()
                             }
                         }
-                        .frame(height: 188)
                         .padding(.top)
                     } else {
                         EmptyView()

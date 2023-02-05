@@ -96,7 +96,7 @@ struct HttpView: View {
                                     .padding()
                             }
                         }
-                        .frame(height: 188)
+                        .frame(maxHeight: 188)
                         .padding(.top)
                     } else {
                         EmptyView()
