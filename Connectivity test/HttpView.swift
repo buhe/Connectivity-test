@@ -11,6 +11,12 @@ import Embassy
 
 struct HttpView: View {
     @State var showPureHttpOutput = false
+    @State var showPureHttpConfig = false
+    @State var httpUrl = "baidu.com:80"
+    @State var httpInterval = ""
+    @State var isPureHttpRunning = false
+    
+    
     @State var showHttpServerOutput = false
     @State var showPureHttpsOutput = false
     @State var showHttpsCertOutput = false
@@ -31,23 +37,52 @@ struct HttpView: View {
                             VStack(alignment: .leading){
                                 Text("Pure Http")
                                 HStack {
-                                    Text("Server:baidu.com")
+                                    Text("URL http://")
+                                    TextField("URL",text: $httpUrl)
                                 }
                                 .font(.caption)
-                                Text("Port:1234")
-                                    .font(.caption)
                             }
                             .padding()
                             Spacer()
-                            Button{
+                            VStack{
+                                Button{
+                                    showPureHttpConfig = true
+                                }label: {
+                                    Image(systemName: "gear")
+                                }
+                                .padding(.top)
                                 
-                            }label: {
-                                Text("Run")
+                                Button{
+                                    if isPureHttpRunning {
+                                        isPureHttpRunning.toggle()
+                                        showPureHttpOutput.toggle()
+                                    } else {
+                                        // loop
+                                        DispatchQueue.global(qos: .background).async {
+                                            let url = URL(string: "http://" + httpUrl)!
+
+                                            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                                                guard let data = data else { return }
+                                                print(String(data: data, encoding: .utf8)!)
+                                                DispatchQueue.main.async {
+                                                    output = String(data: data, encoding: .utf8)!
+                                                }
+                                            }
+
+                                            task.resume()
+                                        }
+                                        isPureHttpRunning.toggle()
+                                        showPureHttpOutput.toggle()
+                                    }
+                                }label: {
+                                    Text(isPureHttpRunning ? "Stop" : "Run")
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .padding()
                             }
-                            .buttonStyle(.borderedProminent)
-                            .padding()
                         }
                     }
+                    .frame(height: 88)
                     
                     if showPureHttpOutput {
                         ZStack(alignment: .leading) {
@@ -61,6 +96,8 @@ struct HttpView: View {
                                     .padding()
                             }
                         }
+                        .frame(height: 188)
+                        .padding(.top)
                     } else {
                         EmptyView()
                     }
@@ -337,6 +374,18 @@ struct HttpView: View {
                 .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
+            .sheet(isPresented: $showPureHttpConfig){
+                    Form{
+                        Section(header: Text("HTTP Settings")) {
+                            TextField("Loop: default always", text: $httpInterval)
+                                .keyboardType(.numberPad)
+                            
+                            TextField("Interval: default 5s", text: $httpInterval)
+                                .keyboardType(.numberPad)
+                        }
+                        
+                    }
+            }
             .toolbar{
                 NavigationLink{
                     SettingsView()

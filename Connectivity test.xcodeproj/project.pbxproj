@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB51DF2298F5497002AA4E1 /* PureHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB51DF1298F5497002AA4E1 /* PureHttp.swift */; };
 		3FF87A612958681E0036672A /* Connectivity_testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF87A602958681E0036672A /* Connectivity_testApp.swift */; };
 		3FF87A632958681E0036672A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF87A622958681E0036672A /* ContentView.swift */; };
 		3FF87A65295868200036672A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF87A64295868200036672A /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		3FB51DF0298E6842002AA4E1 /* Connectivity-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Connectivity-test-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3FB51DF1298F5497002AA4E1 /* PureHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PureHttp.swift; sourceTree = "<group>"; };
 		3FF87A5D2958681E0036672A /* Connectivity test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Connectivity test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF87A602958681E0036672A /* Connectivity_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity_testApp.swift; sourceTree = "<group>"; };
 		3FF87A622958681E0036672A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				3FFF71B0298D1FB6003DE3D9 /* HttpServer.swift */,
 				3FFF71B3298E2847003DE3D9 /* ProView.swift */,
+				3FB51DF1298F5497002AA4E1 /* PureHttp.swift */,
 			);
 			path = inner;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				3FFF71AC298CFC84003DE3D9 /* Ex.swift in Sources */,
 				3FFF71A4298CBDF8003DE3D9 /* SettingsView.swift in Sources */,
+				3FB51DF2298F5497002AA4E1 /* PureHttp.swift in Sources */,
 				3FFF71B4298E2847003DE3D9 /* ProView.swift in Sources */,
 				3FFF719C298CAEAD003DE3D9 /* PingView.swift in Sources */,
 				3FF87A632958681E0036672A /* ContentView.swift in Sources */,
