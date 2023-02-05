@@ -10,7 +10,7 @@ import SSHClient
 
 struct TcpView: View {
     @State var showTcpOutput = false
-    @State var tcpHost = "39.156.66.10"
+    @State var tcpHost = "192.168.31.60"
     @State var tcpPort = "80"
     @State var isTcpRunning = false
     
@@ -44,7 +44,7 @@ struct TcpView: View {
                                 } else {
                                     DispatchQueue.global(qos: .background).async {
                                     let task =
-                                               URLSession.shared.streamTask(withHostName: tcpHost, port: 80)
+                                               URLSession.shared.streamTask(withHostName: tcpHost, port: 13370)
                                     task.readData(ofMinLength: 16384, maxLength: 65536, timeout: 30.0) { (data, eof, error) in
                                         print("error is \(error)")
                                         guard let data = data else { return }
