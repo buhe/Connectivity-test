@@ -10,36 +10,79 @@ import SSHClient
 
 struct TcpView: View {
     @State var showTcpOutput = false
+    @State var tcpHost = "39.156.66.10"
+    @State var tcpPort = "80"
+    @State var isTcpRunning = false
+    
     @State var showSSHOutput = false
     @State var output = ""
     
     var body: some View {
         NavigationStack{
             List {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.red)
-                        .opacity(0.3)
-                    //                    .shadow(radius: 10)
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text("Pure TCP")
-                            HStack {
-                                Text("Server:baidu.com")
-                            }
-                            .font(.caption)
-                            Text("Port:1234")
+                VStack{
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(.red)
+                            .opacity(0.3)
+                        //                    .shadow(radius: 10)
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text("Pure TCP")
+                                HStack {
+                                    Text("Server:baidu.com")
+                                }
                                 .font(.caption)
+                                Text("Port:1234")
+                            }
+                            .padding()
+                            Spacer()
+                            Button{
+                                if isTcpRunning {
+                                    isTcpRunning.toggle()
+                                    showTcpOutput.toggle()
+                                } else {
+                                    DispatchQueue.global(qos: .background).async {
+                                    let task =
+                                               URLSession.shared.streamTask(withHostName: tcpHost, port: 80)
+                                    task.readData(ofMinLength: 16384, maxLength: 65536, timeout: 30.0) { (data, eof, error) in
+                                        print("error is \(error)")
+                                        guard let data = data else { return }
+                                        print(String(data: data, encoding: .utf8)!)
+                                        DispatchQueue.main.async {
+                                            output = String(data: data, encoding: .utf8)!
+                                            }
+                                        }
+                                        
+                                        task.resume()
+                                    }
+                                    isTcpRunning.toggle()
+                                    showTcpOutput.toggle()
+                                }
+                            }label: {
+                                Text(isTcpRunning ? "Stop" : "Run")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                         }
-                        .padding()
-                        Spacer()
-                        Button{
-                            
-                        }label: {
-                            Text("Run")
+                    }
+                    
+                    if showTcpOutput {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.red)
+                                .opacity(0.1)
+                            VStack(alignment: .leading) {
+            
+                                Text(output)
+                                    .font(.caption)
+                                    .padding()
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                        .frame(height: 188)
+                        .padding(.top)
+                    } else {
+                        EmptyView()
                     }
                 }
                 .listRowSeparator(.hidden)

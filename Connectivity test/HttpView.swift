@@ -12,7 +12,7 @@ import Embassy
 struct HttpView: View {
     @State var showPureHttpOutput = false
     @State var showPureHttpConfig = false
-    @State var httpUrl = "baidu.com:80"
+    @State var httpUrl = "baidu.com"
     @State var httpInterval = ""
     @State var isPureHttpRunning = false
     
