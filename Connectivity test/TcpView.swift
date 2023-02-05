@@ -10,6 +10,8 @@ import SSHClient
 
 struct TcpView: View {
     @State var showTcpOutput = false
+    // nc -l 13370 < hi
+    // nc 192.168.31.60 13370
     @State var tcpHost = "192.168.31.60"
     @State var tcpPort = "80"
     @State var isTcpRunning = false
