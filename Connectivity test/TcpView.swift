@@ -19,6 +19,37 @@ struct TcpView: View {
     @State var showSSHOutput = false
     @State var output = ""
     
+    @State var connection: SSHConnection? = nil
+    
+    fileprivate func connectSSH() {
+        DispatchQueue.global(qos: .background).async {
+            connection = SSHConnection(
+                host: "192.168.31.16",
+                port: 22,
+                authentication: SSHAuthentication(
+                    username: "pi",
+                    method: .password(.init("aa11aa")),
+                    hostKeyValidation: .acceptAll()
+                )
+            )
+            
+            connection!.start(withTimeout: 3.0) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        output = "SSH connected."
+                    }
+                    // Handle connection
+                case .failure:
+                    DispatchQueue.main.async {
+                        output = "SSH connect failed. \(result)"
+                    }
+                    // Handle failure
+                }
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack{
             List {
@@ -112,32 +143,7 @@ struct TcpView: View {
                             .padding()
                             Spacer()
                             Button{
-                                DispatchQueue.global(qos: .background).async {
-                                    let connection = SSHConnection(
-                                        host: "192.168.31.16",
-                                        port: 22,
-                                        authentication: SSHAuthentication(
-                                            username: "pi",
-                                            method: .password(.init("aa11aa")),
-                                            hostKeyValidation: .acceptAll()
-                                        )
-                                    )
-                                    
-                                    connection.start(withTimeout: 3.0) { result in
-                                        switch result {
-                                        case .success:
-                                            DispatchQueue.main.async {
-                                                output = "SSH connected."
-                                            }
-                                            // Handle connection
-                                        case .failure:
-                                            DispatchQueue.main.async {
-                                                output = "SSH connect failed. \(result)"
-                                            }
-                                            // Handle failure
-                                        }
-                                    }
-                                }
+                                connectSSH()
                                 
                                 showSSHOutput.toggle()
                             }label: {
